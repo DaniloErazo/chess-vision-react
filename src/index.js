@@ -159,7 +159,7 @@ class Game extends React.Component {
 
       let answersList = document.getElementById('answers');
       let timeFormat = "";
-
+      score++;
       if(time<60){
         if(time < 10){
           timeFormat = "0:0"+time;
@@ -275,6 +275,7 @@ class Timer extends React.Component {
       time += 1;
     }else{
       this.componentWillUnmount();
+
     }
   }
 
@@ -285,6 +286,8 @@ class Timer extends React.Component {
 
   componentWillUnmount() {
     clearInterval(this.interval);
+    let textRandom = document.getElementById("score");
+    textRandom.innerHTML = "Score: " + score;
   }
 
   getFormat(x){
