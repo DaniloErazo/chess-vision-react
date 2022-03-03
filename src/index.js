@@ -22,9 +22,6 @@ function BtnStart(){
 function startGame(){
   this.start = true;
 }
-  
-
-
 class Board extends React.Component {
   renderSquare(i) {
     return (
@@ -107,7 +104,7 @@ class Board extends React.Component {
           {this.renderSquare('F2')}
           {this.renderSquare('G2')}
           {this.renderSquare('H2')}
-        </div>
+        </div> 
         <div className="board-row">
           {this.renderSquare("A1")}
           {this.renderSquare("B1")}
@@ -156,7 +153,6 @@ class Game extends React.Component {
   }
 
   render() {
-    BtnStart();
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
@@ -165,20 +161,10 @@ class Game extends React.Component {
       const desc = move ?
         'Go to move #' + move :
         'Go to game start';
-      return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      
-      );
+    
     });
 
-    let status;
-    if (winner) {
-      status = "Winner: " + winner;
-    } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    }
+    
 
     return (
       <div className="game">
@@ -268,3 +254,8 @@ ReactDOM.render(
   <Timer />,
   document.getElementById('timer')
 );
+
+ReactDOM.render(
+  BtnStart(),
+  document.getElementById('btnStart')
+)
