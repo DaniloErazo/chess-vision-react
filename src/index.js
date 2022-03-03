@@ -13,14 +13,14 @@ function Square(props) {
 
 function BtnStart(){
   return (
-    <button className="btnStart"  >
+    <button className="btnStart" >
       Comenzar
     </button>
   );
 }
 
 function startGame(){
-  this.start = true;
+    start = true;
 }
 class Board extends React.Component {
   renderSquare(i) {
@@ -219,7 +219,7 @@ function calculateWinner(squares) {
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { seconds: 6};
+    this.state = { seconds: 60};
   }
 
   tick() {
