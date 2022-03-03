@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 let start = false;
 let score = 0;
 let cell = "";
+let usedTime = 0;
 
 function Square(props) {
 
@@ -146,7 +147,10 @@ class Game extends React.Component {
   handleClick(i) {
     console.log(i + ';' + cell);
     if(i==cell){
-      console.log("en la buena");
+      console.log("Yes");
+      this.score++;
+    }else {
+      console.log("No");
     }
     let randomnum = getRandomArbitrary(1,8);
     let ranLetter = getRandomArbitrary(1,8);
