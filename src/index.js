@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
+let start = false;
 
 function Square(props) {
 
@@ -9,6 +10,20 @@ function Square(props) {
     </button>
   );
 }
+
+function BtnStart(){
+  return (
+    <button className="btnStart"  >
+      Comenzar
+    </button>
+  );
+}
+
+function startGame(){
+  this.start = true;
+}
+  
+
 
 class Board extends React.Component {
   renderSquare(i) {
@@ -142,6 +157,7 @@ class Game extends React.Component {
   }
 
   render() {
+    BtnStart();
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
@@ -154,6 +170,7 @@ class Game extends React.Component {
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
+      
       );
     });
 
@@ -178,6 +195,7 @@ class Game extends React.Component {
         </div>
       </div>
     );
+
   }
 }
 
@@ -187,6 +205,8 @@ function getRandomArbitrary(min, max) {
 // ========================================
 
 ReactDOM.render(<Game />, document.getElementById("root"));
+
+
 
 function calculateWinner(squares) {
   const lines = [
