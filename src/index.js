@@ -157,9 +157,13 @@ class Game extends React.Component {
 
     if(i==cell){
 
+      let elementImage = document.getElementById('imageCOI');
+      elementImage.src = "./../imgs/chulo.jpg";
+
       let answersList = document.getElementById('answers');
       let timeFormat = "";
 
+      
       if(time<60){
         if(time < 10){
           timeFormat = "0:0"+time;
@@ -171,6 +175,9 @@ class Game extends React.Component {
       }
 
       answersList.innerHTML = answersList.innerText + "\n"+ cell +" "+ timeFormat +"; " ;
+    }else{
+      let elementImage = document.getElementById('imageCOI');
+      elementImage.src = "./../imgs/ximage.png";
     }
 
 
