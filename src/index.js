@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 let start = false;
+let score = 0;
+let cell = "";
 
 function Square(props) {
 
@@ -13,14 +15,26 @@ function Square(props) {
 
 function BtnStart(){
   return (
+<<<<<<< HEAD
     <button className="btnStart" >
+=======
+    <button className="btnStart"  onClick={startGame()} >
+>>>>>>> 13742a11e7afa84244b0336f184b35280f20e57c
       Comenzar
     </button>
   );
 }
 
 function startGame(){
+<<<<<<< HEAD
     start = true;
+=======
+  start = true;
+  let randomnum = getRandomArbitrary(1,8);
+  let ranLetter = getRandomArbitrary(1,8);
+  cell = String.fromCharCode(Math.floor(ranLetter)+65) + Math.floor(randomnum);
+  console.log(cell);
+>>>>>>> 13742a11e7afa84244b0336f184b35280f20e57c
 }
 class Board extends React.Component {
   renderSquare(i) {
@@ -138,7 +152,10 @@ class Game extends React.Component {
   }
 
   handleClick(i) {
-    console.log(i);
+    console.log(i + ';' + cell);
+    if(i==cell){
+      console.log("en la buena");
+    }
     let randomnum = getRandomArbitrary(1,8);
     let ranLetter = getRandomArbitrary(1,8);
     //console.log(Math.floor(randomnum));
@@ -163,9 +180,6 @@ class Game extends React.Component {
         'Go to game start';
     
     });
-
-    
-
     return (
       <div className="game">
         <div className="game-board">
@@ -221,7 +235,6 @@ class Timer extends React.Component {
     super(props);
     this.state = { seconds: 60};
   }
-
   tick() {
     if(this.state.seconds != 0){
       this.setState(state => ({
