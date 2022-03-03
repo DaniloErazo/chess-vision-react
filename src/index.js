@@ -255,10 +255,22 @@ class Timer extends React.Component {
     clearInterval(this.interval);
   }
 
+  getFormat(){
+    if(this.state.seconds<60){
+      if(this.state.seconds<10){
+        return "0:0"+this.state.seconds;
+      }else{
+        return "0:"+this.state.seconds;
+      }
+    }else{
+      return "1:00";
+    }
+  }
+
   render() {
     return (
       <div>
-        Seconds: {this.state.seconds}
+        {this.getFormat()}
       </div>
     );
   }
