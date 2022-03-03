@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom'
 let start = false;
 let score = 0;
 let cell = "";
-<<<<<<< HEAD
+
 let time = 0;
-=======
+
 let usedTime = 0;
->>>>>>> 068091c402fe7f0a803a19876134e0e7e4e9d68a
+
 
 function Square(props) {
 
@@ -156,7 +156,7 @@ class Game extends React.Component {
   handleClick(i) {
 
     if(i==cell){
-<<<<<<< HEAD
+
       let answersList = document.getElementById('answers');
       let timeFormat = "";
 
@@ -171,12 +171,6 @@ class Game extends React.Component {
       }
 
       answersList.innerHTML = answersList.innerText + "\n"+ cell +" "+ timeFormat +"; " ;
-=======
-      console.log("Yes");
-      this.score++;
-    }else {
-      console.log("No");
->>>>>>> 068091c402fe7f0a803a19876134e0e7e4e9d68a
     }
 
 
