@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 let start = false;
 let score = 0;
 let cell = "";
+let time = 0;
 
 function Square(props) {
 
@@ -28,7 +29,8 @@ function startGame(){
     let randomnum = getRandomArbitrary(1,8);
     let ranLetter = getRandomArbitrary(1,8);
     cell = String.fromCharCode(Math.floor(ranLetter)+65) + Math.floor(randomnum);
-    console.log(cell);
+    let textRandom = document.getElementById("random");
+    textRandom.innerHTML = cell;
 
   }
 
@@ -148,16 +150,39 @@ class Game extends React.Component {
   }
 
   handleClick(i) {
-    console.log(i + ';' + cell);
+
     if(i==cell){
-      console.log("en la buena");
+      let answersList = document.getElementById('answers');
+      let timeFormat = "";
+
+      if(time<60){
+        if(time < 10){
+          timeFormat = "0:0"+time;
+        }else{
+          timeFormat = "0:"+time;
+        }
+      }else{
+        timeFormat = "1:00";
+      }
+
+      answersList.innerHTML = answersList.innerText + "\n"+ cell +" "+ timeFormat +"; " ;
     }
-    let randomnu
+
+
+
+    //
     let randomnum = getRandomArbitrary(1,8);
     let ranLetter = getRandomArbitrary(1,8);
-    //console.log(Math.floor(randomnum));
-    //console.log(String.fromCharCode(Math.floor(randomnum)+65)+Math.floor(randomnum));
+    cell = String.fromCharCode(Math.floor(ranLetter)+65) + Math.floor(randomnum);
+
+    let textRandom = document.getElementById("random");
+    textRandom.innerHTML = cell;
+
   }
+
+  
+    
+  
 
   jumpTo(step) {
     this.setState({
@@ -233,6 +258,7 @@ function calculateWinner(squares) {
 class Timer extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = { seconds: 60};
   }
 
@@ -241,6 +267,7 @@ class Timer extends React.Component {
       this.setState(state => ({
         seconds: state.seconds - 1
       }));
+      time += 1;
     }else{
       this.componentWillUnmount();
     }
@@ -255,12 +282,12 @@ class Timer extends React.Component {
     clearInterval(this.interval);
   }
 
-  getFormat(){
-    if(this.state.seconds<60){
-      if(this.state.seconds<10){
-        return "0:0"+this.state.seconds;
+  getFormat(x){
+    if(x<60){
+      if(x < 10){
+        return "0:0"+x;
       }else{
-        return "0:"+this.state.seconds;
+        return "0:"+x;
       }
     }else{
       return "1:00";
@@ -270,7 +297,7 @@ class Timer extends React.Component {
   render() {
     return (
       <div>
-        {this.getFormat()}
+        {this.getFormat(this.state.seconds)}
       </div>
     );
   }
